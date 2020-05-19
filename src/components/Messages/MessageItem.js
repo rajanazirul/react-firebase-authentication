@@ -41,12 +41,14 @@ class MessageItem extends Component {
           />
         ) : (
           <span>
-            <strong>{message.userId}</strong> {message.text}
+            <strong>{message.userName}</strong> {message.text} {'℃'} {Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(message.createdAt)}
+            
             {message.editedAt && <span>(Edited)</span>}
           </span>
         )}
 
-        {authUser.uid === message.userId && (
+        {/* change message.userId to message.userName to disable edit/delete*/}
+        {authUser.uid === message.userName && (
           <span>
             {editMode ? (
               <span>
